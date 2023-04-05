@@ -87,6 +87,7 @@ numpy==1.23.5
     #   numba
     #   opencv-contrib-python
     #   opencv-python
+    #   opencv-python-headless
     #   pims
     #   pywavelets
     #   scikit-image
@@ -96,6 +97,8 @@ opencv-contrib-python==4.7.0.72
     # via mps-motion
 opencv-python==4.7.0.72
     # via mps-motion
+opencv-python-headless==4.7.0.72
+    # via -r requirements.in
 packaging==23.0
     # via
     #   bokeh
