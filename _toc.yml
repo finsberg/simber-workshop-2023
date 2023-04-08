@@ -1,5 +1,16 @@
 format: jb-book
 root: README
 
-chapters:
-  - file: "intro.ipynb"
+parts:
+  - caption: Setup
+    chapters:
+    - file: "download_data.ipynb"
+  - caption: Recap 2022
+    chapters:
+    - file: "read_data.ipynb"
+    - file: "analyze_trace.ipynb"
+    - file: "cli_scripts.ipynb"
+  - caption: Recent advancements
+    chapters:
+    - file: "motion.ipynb"
+    - file: "tpe.ipynb"
