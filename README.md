@@ -21,7 +21,8 @@
 
 ### Recent advancements
 
-- [Mo
+- [Motion estimation](motion.ipynb)
+- [TPE analysis and Tissue detection](tpe.ipynb)
 
 
 ## Run notebooks with binder
