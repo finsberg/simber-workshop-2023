@@ -1,7 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import ap_features as apf
-import mps_motion
 
 
 def arrow_annotate(axi, y, t1, t2, label):
@@ -55,24 +53,13 @@ def plot_features(u_norm, v_norm, time, start=40, end=100, indices=None):
 
     labels = ["1", "2", "3", "4", "5"]
 
+    max_u = np.max(u_norm[start:end]) - np.min(u_norm[start:end])
+    max_v = np.max(v_norm[start:end]) - np.min(v_norm[start : end - spacing])
+
     u_norm = normalize(u_norm[start:end])
     v_norm = normalize(v_norm[start : end - spacing])
-    t = normalize(time[start:end])
-    time_v = time[spacing // 2 :]
-
-    u = apf.Beats(
-        y=u_norm[start:end],
-        t=time[start:end],
-    )
-    v = apf.Beats(
-        y=v_norm[start : end - spacing],
-        t=time[start : end - spacing],
-    )
-
-    features = {
-        k: v[0]
-        for k, v in mps_motion.stats.compute_features(u=u.y, v=v.y, t=u.t).items()
-    }
+    time = normalize(time[start:end])
+    time_v = time[spacing // 2 : -spacing // 2]
 
     indices_v = [i - spacing // 2 for i in indices]
 
@@ -162,14 +149,14 @@ def plot_features(u_norm, v_norm, time, start=40, end=100, indices=None):
 
     num_points = 5
     points = np.linspace(0, 1, num_points)
-    u_points = np.linspace(np.min(u.y), np.max(u.y), num_points)
+    u_points = np.linspace(0, max_u, num_points)
     ax[0].set_yticks(points)
     ax[0].set_yticklabels([f"{vi:.1f}" for vi in u_points])
-    v_points = np.linspace(np.min(v.y), np.max(v.y), num_points)
+    v_points = np.linspace(0, max_v, num_points)
     ax[1].set_yticks(points)
     ax[1].set_yticklabels([f"{vi:.0f}" for vi in v_points])
 
-    t_points = np.linspace(u.t[0], u.t[-1], num_points)
+    t_points = np.linspace(time[0], time[-1], num_points)
     ax[1].set_xticks(points)
     ax[1].set_xticklabels([f"{vi:.0f}" for vi in t_points])
     ax[1].set_xlabel("Time [ms]")
@@ -177,10 +164,8 @@ def plot_features(u_norm, v_norm, time, start=40, end=100, indices=None):
     for axi in ax.flatten():
         axi.grid()
 
-    ax[0, 0].set_title("Dataset 1")
-    ax[0, 1].set_title("Dataset 2")
-    ax[0, 0].set_ylabel("Displacement [\u00B5m]")
-    ax[1, 0].set_ylabel("Velocity [\u00B5m / s]")
+    ax[0].set_ylabel("Displacement [\u00B5m]")
+    ax[1].set_ylabel("Velocity [\u00B5m / s]")
 
     legend = "\n".join(
         [
@@ -199,3 +184,9 @@ def plot_features(u_norm, v_norm, time, start=40, end=100, indices=None):
     fig.text(0.68, 0.45, legend, size="xx-large")
     fig.subplots_adjust(right=0.65)
     return fig, ax
+
+
+if __name__ == "__main__":
+    d = np.load("d.npy", allow_pickle=True).item()
+    plot_features(**d)
+    plt.show()
