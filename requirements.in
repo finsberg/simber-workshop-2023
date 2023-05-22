@@ -2,3 +2,8 @@ cardiac-mps
 mps-motion
 opencv-python-headless
 opencv-contrib-python-headless
+
+# Nick
+pandas
+scikit-learn
+pathlib
