@@ -82,7 +82,8 @@ jupyter-lab
 
 ## Authors
 - Henrik Finsberg
-
+- Nick Forsch
+- Andy Edwards
 
 ## License
 
