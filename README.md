@@ -13,16 +13,28 @@
 
 - [Download data for this workshop](download_data.ipynb)
 
+### Updates to the cardiac MPS package - Henrik
+
+- [Motion estimation](motion.ipynb)
+- [TPE analysis and Tissue detection](tpe.ipynb)
+
+
+### Lab scale small sample analysis/inference - Andy
+
+- [Small_sample_analyses_1](Small_sample_analyses_1.ipynb)
+- [Small_sample_analyses_2](Small_sample_analyses_2.ipynb)
+
+### Big data reduction and feature detection - Nick
+
+- [Advanced Data Science for MPS](data_science_analyses.ipynb)
+
+
 ### Recap from last workshop
+If you want some recap from the last workshop in 2022, we have also included these notebooks
 
 - [Importing a file using the mps library and printing some info about it](read_data.ipynb)
 - [Extracting a trace from the frames and analyze it](analyze_trace.ipynb)
 - [Running command line scripts](cli_scripts.ipynb)
-
-### Recent advancements
-
-- [Motion estimation](motion.ipynb)
-- [TPE analysis and Tissue detection](tpe.ipynb)
 
 
 ## Run notebooks with binder
