@@ -1,12 +1,37 @@
+import urllib.request
+import time
 import pandas as pd
 import numpy as np
 from pathlib import Path
 
 
+def download_data(path, case):
+    if case == "features":
+        print("Download features.csv")
+        link = "https://www.dropbox.com/s/8ph19rsrgnj1k1j/features.csv?dl=1"
+    elif case == "traces_avg":
+        print("Download traces_avg.csv")
+        link = "https://www.dropbox.com/s/yrf9uxtacpv0gi5/traces_avg.csv?dl=1"
+    else:
+        raise ValueError(f"Unknown case {case}. Expected 'features' or 'traces_avg'")
+    urllib.request.urlretrieve(link, path)
+    time.sleep(1.0)
+    print("Done downloading data")
+
+
 def load_data():
     path_to_data = Path("data_curated")
+    path_to_data.mkdir(exist_ok=True)
 
-    df_features = pd.read_csv(path_to_data.joinpath("features.csv"), index_col=0)
+    features_path = path_to_data / "features.csv"
+    if not features_path.is_file():
+        download_data(features_path, "features")
+
+    traces_avg_path = path_to_data / "traces_avg.csv"
+    if not traces_avg_path.is_file():
+        download_data(traces_avg_path, "traces_avg")
+
+    df_features = pd.read_csv(features_path, index_col=0)
     df_features.replace(["0nM", "0uM"], "baseline", inplace=True)
     df_features.sort_values(
         ["drug", "experiment", "well", "tissue", "dose"],
@@ -21,7 +46,7 @@ def load_data():
     df_features.drop(index=df_features.iloc[drop_rows].index.tolist(), inplace=True)
     df_features.reset_index(drop=True, inplace=True)
 
-    df_traces = pd.read_csv(path_to_data.joinpath("traces_avg.csv"), index_col=0)
+    df_traces = pd.read_csv(traces_avg_path, index_col=0)
 
     cols_array = [
         "voltage_time",
