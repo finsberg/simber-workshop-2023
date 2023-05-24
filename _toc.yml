@@ -10,7 +10,16 @@ parts:
     - file: "read_data.ipynb"
     - file: "analyze_trace.ipynb"
     - file: "cli_scripts.ipynb"
-  - caption: Recent advancements
+  - caption: Henrik
     chapters:
     - file: "motion.ipynb"
     - file: "tpe.ipynb"
+
+  - caption: Andy
+    chapters:
+    - file: "Small_sample_analyses_1.ipynb"
+    - file: "Small_sample_analyses_2.ipynb"
+
+  - caption: Nick
+    chapters:
+    - file: "data_science_analyses.ipynb"
