@@ -68,6 +68,8 @@ matplotlib==3.6.2
     #   ap-features
     #   cardiac-mps
     #   mps-motion
+    #   scikit-posthocs
+    #   seaborn
 mps-motion==0.3.3
     # via -r requirements.in
 networkx==3.0
@@ -92,11 +94,15 @@ numpy==1.23.5
     #   opencv-python
     #   opencv-python-headless
     #   pandas
+    #   patsy
     #   pims
     #   pywavelets
     #   scikit-image
     #   scikit-learn
+    #   scikit-posthocs
     #   scipy
+    #   seaborn
+    #   statsmodels
     #   tifffile
 opencv-contrib-python==4.7.0.72
     # via mps-motion
@@ -112,12 +118,19 @@ packaging==23.0
     #   dask
     #   matplotlib
     #   scikit-image
+    #   statsmodels
 pandas==2.0.1
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   scikit-posthocs
+    #   seaborn
+    #   statsmodels
 partd==1.3.0
     # via dask
 pathlib==1.0.1
     # via -r requirements.in
+patsy==0.5.3
+    # via statsmodels
 pillow==9.4.0
     # via
     #   bokeh
@@ -146,18 +159,33 @@ scikit-image==0.20.0
     # via cardiac-mps
 scikit-learn==1.2.2
     # via -r requirements.in
+scikit-posthocs==0.7.0
+    # via -r requirements.in
 scipy==1.10.0
     # via
+    #   -r requirements.in
     #   ap-features
     #   cardiac-mps
     #   dask-image
     #   mps-motion
     #   scikit-image
     #   scikit-learn
+    #   scikit-posthocs
+    #   statsmodels
+seaborn==0.12.2
+    # via
+    #   -r requirements.in
+    #   scikit-posthocs
 six==1.16.0
-    # via python-dateutil
+    # via
+    #   patsy
+    #   python-dateutil
 slicerator==1.1.0
     # via pims
+statsmodels==0.14.0
+    # via
+    #   -r requirements.in
+    #   scikit-posthocs
 threadpoolctl==3.1.0
     # via scikit-learn
 tifffile==2023.3.21

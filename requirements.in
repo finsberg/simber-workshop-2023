@@ -7,3 +7,9 @@ opencv-contrib-python-headless
 pandas
 scikit-learn
 pathlib
+
+# Andy
+statsmodels
+scikit-posthocs
+scipy
+seaborn
